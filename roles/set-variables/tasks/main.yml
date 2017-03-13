@@ -1,0 +1,3 @@
+---
+- name: Load Environment Variables
+  include_vars: "{{ inventory_dir }}/group_vars/all.yaml"

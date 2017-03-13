@@ -1,0 +1,21 @@
+---
+- name: Find existing instances
+  ec2_remote_facts:
+    filters:
+      "tag:Name": "{{ ec2_instance_name }}"
+  register: ec2_remote_facts
+
+- name: "Instances found:"
+  debug: var=ec2_remote_facts.id
+
+- name: Wait for instances to listen on port 22
+  wait_for:
+    state=started
+    host="{{ item.public_ip_address }}"
+    port=22
+  with_flattened: "{{ ec2_remote_facts.instances }}"
+
+- add_host:
+    hostname={{ item.public_ip_address }}
+    groupname="ec2hosts"
+  with_flattened: "{{ ec2_remote_facts.instances }}"

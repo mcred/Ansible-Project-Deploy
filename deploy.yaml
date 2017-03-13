@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  connection: local
+  roles:
+  - set-variables
+  - get-hosts
+
+- hosts: ec2hosts
+  gather_facts: no
+  roles:
+  - deploy-to-instance

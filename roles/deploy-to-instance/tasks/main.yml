@@ -1,0 +1,26 @@
+---
+- name: "SYNCH CODE"
+  become: true
+  synchronize:
+    src: "../../../../"
+    dest: "{{ full_domain_path }}"
+
+- name: "SET OWNERSHIP"
+  become: true
+  file: path={{ full_domain_path }} owner=apache group=apache recurse=yes
+
+- name: "SET FILES TO 0644"
+  become: true
+  command: find {{ full_domain_path }} -type f -exec chmod 0644 {} \;
+
+- name: "SET BIN FILES TO 0755"
+  become: true
+  command: find {{ full_domain_path }}/bin -type f -exec chmod 0755 {} \;
+
+- name: "SET DIRECTORIES TO 0755"
+  become: true
+  command: find {{ full_domain_path }} -type d -exec chmod 0755 {} \;
+
+- name: "SET DIRECTORIES TO +S"
+  become: true
+  command: find {{ full_domain_path }} -type d -exec chmod +s {} \;
