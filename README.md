@@ -36,7 +36,7 @@ cp YOURANSIBLECONFIG.yaml ./ansible/inventory/group_vars/all.yaml
 cp ~/.ssh/YOURKEYFILE.pem ./ansible/inventory/ansible-deploy-key.pem
 cp ~/.ssh/YOURAWSKEYS ./ansible/inventory/aws_keys
 ```
-<p>Once your configuration is in place, simple run `./deploy.sh`</p>
+<p>Once your configuration is in place, simply run `./deploy.sh`</p>
 
 ### Sample Jenkins Configuration
 * <b>General:</b> Can be any Project setting. I've used both GitHub and BitBucket.
