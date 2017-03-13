@@ -44,6 +44,7 @@ cp ~/.ssh/YOURAWSKEYS ./ansible/inventory/aws_keys
 * <b>Build Triggers:</b> Can be anything, I use When changes are made on the Source Branch.
 * <b>Build Environment:</b> Delete workspace before build starts.
 * <b>Build:</b> This is where the magic happens. This is done in two steps. First to get the submodule and then to run the build script. Set up two `Execute Shell` steps like below.
+
 #### First Execute Shell Step
 ```
 git submodule init
