@@ -13,9 +13,13 @@
   become: true
   command: find {{ full_domain_path }} -type f -exec chmod 0644 {} \;
 
+- stat: path={{ full_domain_path }}/bin
+  register: bin_exists
+
 - name: "SET BIN FILES TO 0755"
   become: true
   command: find {{ full_domain_path }}/bin -type f -exec chmod 0755 {} \;
+  when: bin_exists.stat.exists == True
 
 - name: "SET DIRECTORIES TO 0755"
   become: true
