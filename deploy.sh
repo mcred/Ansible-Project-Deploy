@@ -7,6 +7,7 @@ set -u # Variables must be explicit
 set -e # If any command fails, fail the whole thing
 set -o pipefail
 
+source utilities/add_key.sh
 source utilities/init.sh
 
 ansible-playbook deploy.yaml -vvv
