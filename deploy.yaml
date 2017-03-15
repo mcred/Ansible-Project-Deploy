@@ -4,6 +4,7 @@
   roles:
   - set-variables
   - get-hosts
+  - build-composer
 
 - hosts: ec2hosts
   gather_facts: no

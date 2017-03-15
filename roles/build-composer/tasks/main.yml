@@ -1,3 +1,4 @@
 ---
 - include: 001-install-composer.yml
   when: composer_build
+- include: 002-install-dependencies.yml
