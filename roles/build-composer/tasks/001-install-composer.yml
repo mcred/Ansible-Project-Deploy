@@ -22,3 +22,8 @@
   become: true
   command: chmod +x /usr/bin/composer
   when: composer_installed.stat.exists == False
+
+- name: "Remove Composer install file"
+  become: true
+  command: rm -f installer.php
+  when: composer_installed.stat.exists == False
