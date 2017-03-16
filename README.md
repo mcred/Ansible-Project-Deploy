@@ -13,16 +13,19 @@
 
 ### How To Install
 <p>In the root folder for your project, run the following:</p>
+
 `git submodule add https://github.com/mcred/Ansible-Project-Deploy ./ansible/`
 
 ### How To Set Up
 <p>Whether you are running this locally or on a remote server, Ansible assumes that your host has CLI access to AWS configured. This script will help set that up, but you will need two files: the PEM file that was used to create the EC2 host and a configuration file that contains the following:</p>
+
 ```
 export AWS_ACCESS_KEY_ID='INSERT YOUR ACCESS KEY'
 export AWS_SECRET_ACCESS_KEY='INSERT YOUR SECRET KEY'
 export EC2_REGION='INSERT YOUR REGION'
 ```
 <p><b>DO NOT commit these files to your project</b> and put them under version control, rather install these files outside of your project directory in a place where Jenkins can access them. During one of your CI build steps, the files should be copied into the proper place. An Ansible variable file is also needed. This can be stored inside of version control and copied into the proper place during runtime. Sample Ansible config:</p>
+
 ```
 ---
 ec2_instance_name: "EC2 INSTANCE NAME TAG"
@@ -31,6 +34,7 @@ full_domain_path: "example: /var/www/vhosts/YOURDOMAIN.com"
 
 ### How To Use
 <p>Prior to running the `deploy.sh` command, copy your configuration files into place:</p>
+
 ```
 cp YOURANSIBLECONFIG.yaml ./ansible/inventory/group_vars/all.yaml
 cp ~/.ssh/YOURKEYFILE.pem ./ansible/inventory/ansible-deploy-key.pem
