@@ -47,8 +47,12 @@ cp ~/.ssh/YOURAWSKEYS ./ansible/inventory/aws_keys
 
 #### First Execute Shell Step
 ```
-git submodule init
-git submodule update
+git submodule add https://github.com/mcred/Ansible-Project-Deploy ./ansible/
+touch ./ansible/inventory/group_vars/all.yaml
+echo '---' >> ./ansible/inventory/group_vars/all.yaml
+echo 'ec2_instance_name: "HOST_BOX_NAME"' >> ./ansible/inventory/group_vars/all.yaml
+echo 'full_domain_path: "/var/www/vhosts/YOURDOMAIN.com"' >> ./ansible/inventory/group_vars/all.yaml
+echo 'composer_build: false' >> ./ansible/inventory/group_vars/all.yaml
 ```
 #### Second Execute Shell Step
 ```
