@@ -30,6 +30,7 @@ export EC2_REGION='INSERT YOUR REGION'
 ---
 ec2_instance_name: "EC2 INSTANCE NAME TAG"
 full_domain_path: "example: /var/www/vhosts/YOURDOMAIN.com"
+composer_build: false
 ```
 
 ### How To Use
