@@ -1,4 +1,3 @@
 ---
 - name: Install Composer dependencies
-  become: true
   command: composer install
