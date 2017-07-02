@@ -5,13 +5,21 @@
     src: "../../../../"
     dest: "{{ full_domain_path }}"
 
+- set_fact: set_owner=true
+  when: set_owner is undefined
+
+- set_fact: set_mode=true
+  when: set_mode is undefined
+
 - name: "SET OWNERSHIP"
   become: true
   file: path={{ full_domain_path }} owner=apache group=apache recurse=yes
+  when: set_owner
 
 - name: "SET FILES TO 0644"
   become: true
   command: find {{ full_domain_path }} -type f -exec chmod 0644 {} \;
+  when: set_mode
 
 - stat: path={{ full_domain_path }}/bin
   register: bin_exists
@@ -24,7 +32,9 @@
 - name: "SET DIRECTORIES TO 0755"
   become: true
   command: find {{ full_domain_path }} -type d -exec chmod 0755 {} \;
+  when: set_mode
 
 - name: "SET DIRECTORIES TO +S"
   become: true
   command: find {{ full_domain_path }} -type d -exec chmod +s {} \;
+  when: set_mode
