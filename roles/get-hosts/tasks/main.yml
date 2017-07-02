@@ -6,8 +6,7 @@
   register: ec2_remote_facts
 
 - name: Set Default IP Access
-  set_fact:
-    ip_access: public
+  set_fact: ip_access="public"
   when: ip_access is undefined
 
 - name: Wait for instances to listen on port 22
