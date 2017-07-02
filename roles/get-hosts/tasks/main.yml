@@ -24,7 +24,7 @@
   with_flattened: "{{ ec2_remote_facts.instances }}"
   when: "{{ ip_access }} == public"
 
- name: Wait for instances to listen on port 22
+- name: Wait for instances to listen on port 22
   wait_for:
     state=started
     host="{{ item.private_ip_address }}"
