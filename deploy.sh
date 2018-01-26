@@ -10,4 +10,4 @@ set -o pipefail
 source utilities/add_key.sh -vvv
 source utilities/init.sh
 
-ansible-playbook deploy.yaml -vvv
+ansible-playbook deploy.yaml -i ./inventory -vvv
