@@ -4,7 +4,7 @@
 
 ### Requirements
 * Python 2.7
-* Ansible 2.2
+* Ansible 2.4
 * Git
 * An EC2 LAMP Server
 * A Private Key PEM file for the above server
